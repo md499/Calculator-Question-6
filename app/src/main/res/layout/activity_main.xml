@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="97dp">
+
+        <TextView
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:gravity="center"
+            android:inputType="text"
+            android:hint="Result" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/showInput1"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="1"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/showInput2"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="2"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/showInput3"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="3"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/showInput4"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="+"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/showInput5"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="*"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/showInput6"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="4"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/showInput7"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="5"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/showInput8"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="6"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/showInput9"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="-"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/showInput10"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="/"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/showInput11"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="7"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/showInput12"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="8"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/showInput13"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="9"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+
+            <Button
+                android:id="@+id/showInput14"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="sqrt"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/showInput15"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="0"
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+
+            <Button
+                android:id="@+id/showInput16"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="."
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+
+
+            <Button
+                android:id="@+id/showInput17"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_gravity="clip_horizontal"
+                android:text="="
+                android:onClick="numberEvent"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
