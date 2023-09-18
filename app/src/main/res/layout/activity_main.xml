@@ -6,24 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <TextView
         android:id="@+id/result"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="95dp"
+        android:text="result"
+        android:gravity="center"
+        android:textSize="40dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraint_toRightOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnOne"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="1"
-        app:layout_constraintLeft_toBottomOf="@id/result"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
 
@@ -32,8 +31,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="2"
-        app:layout_constraintLeft_toBottomOf="@id/result"
-        app:layout_constraintLeft_toRightOf="@id/btnOne"
+        app:layout_constraintStart_toEndOf="@+id/btnOne"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
 
@@ -42,8 +40,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="3"
-        app:layout_constraintLeft_toBottomOf="@id/result"
-        app:layout_constraintLeft_toRightOf="@id/btnTwo"
+        app:layout_constraintStart_toEndOf="@+id/btnTwo"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
 
@@ -52,8 +49,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="+"
-        app:layout_constraintLeft_toBottomOf="@id/result"
-        app:layout_constraintLeft_toRightOf="@id/btnThree"
+        app:layout_constraintStart_toEndOf="@+id/btnThree"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
 
@@ -62,27 +58,25 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="*"
-        app:layout_constraintLeft_toBottomOf="@id/result"
-        app:layout_constraintLeft_toRightOf="@id/btnAdd"
+        app:layout_constraintStart_toEndOf="@+id/btnAdd"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
-
 
     <Button
         android:id="@+id/btnFour"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/rectangle"
         android:text="4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOne" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOne"
+        android:background="@drawable/rectangle" />
 
     <Button
         android:id="@+id/btnFive"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="5"
-        app:layout_constraintLeft_toRightOf="@id/btnFour"
+        app:layout_constraintStart_toEndOf="@+id/btnFour"
         app:layout_constraintTop_toBottomOf="@+id/btnTwo"
         android:background="@drawable/rectangle" />
 
@@ -91,7 +85,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="6"
-        app:layout_constraintLeft_toRightOf="@id/btnFive"
+        app:layout_constraintStart_toEndOf="@+id/btnFive"
         app:layout_constraintTop_toBottomOf="@+id/btnThree"
         android:background="@drawable/rectangle" />
 
@@ -100,7 +94,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="-"
-        app:layout_constraintLeft_toRightOf="@id/btnSix"
+        app:layout_constraintStart_toEndOf="@+id/btnSix"
         app:layout_constraintTop_toBottomOf="@+id/btnAdd"
         android:background="@drawable/rectangle" />
 
@@ -108,8 +102,8 @@
         android:id="@+id/btnDiv"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:text="\"
-        app:layout_constraintLeft_toRightOf="@id/btnMinus"
+        android:text="/"
+        app:layout_constraintStart_toEndOf="@+id/btnMinus"
         app:layout_constraintTop_toBottomOf="@+id/btnMul"
         android:background="@drawable/rectangle" />
 
@@ -117,17 +111,17 @@
         android:id="@+id/btnSeven"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/rectangle"
         android:text="7"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFour" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFour"
+        android:background="@drawable/rectangle" />
 
     <Button
         android:id="@+id/btnEight"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="8"
-        app:layout_constraintLeft_toRightOf="@id/btnSeven"
+        app:layout_constraintStart_toEndOf="@+id/btnSeven"
         app:layout_constraintTop_toBottomOf="@+id/btnFour"
         android:background="@drawable/rectangle" />
 
@@ -136,7 +130,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="9"
-        app:layout_constraintLeft_toRightOf="@id/btnEight"
+        app:layout_constraintStart_toEndOf="@+id/btnEight"
         app:layout_constraintTop_toBottomOf="@+id/btnSix"
         android:background="@drawable/rectangle" />
 
@@ -145,7 +139,7 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:text="sqrt"
-        app:layout_constraintLeft_toRightOf="@id/btnNine"
+        app:layout_constraintStart_toEndOf="@+id/btnNine"
         app:layout_constraintTop_toBottomOf="@+id/btnMinus"
         android:background="@drawable/rectangle" />
 
@@ -154,7 +148,7 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:text="0"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSeven"
         android:background="@drawable/rectangle" />
 
@@ -163,7 +157,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="."
-        app:layout_constraintLeft_toRightOf="@id/btnZero"
+        app:layout_constraintStart_toEndOf="@+id/btnZero"
         app:layout_constraintTop_toBottomOf="@+id/btnNine"
         android:background="@drawable/rectangle" />
 
@@ -172,11 +166,8 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:text="="
-        app:layout_constraintLeft_toRightOf="@id/btnDot"
+        app:layout_constraintStart_toEndOf="@+id/btnDot"
         app:layout_constraintTop_toBottomOf="@+id/btnSqrt"
         android:background="@drawable/rectangle" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
