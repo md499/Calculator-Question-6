@@ -170,4 +170,15 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSqrt"
         android:background="@drawable/rectangle" />
 
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        android:text="Clear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnZero"
+        android:background="@drawable/rectangle" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
