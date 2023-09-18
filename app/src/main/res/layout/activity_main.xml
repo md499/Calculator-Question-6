@@ -6,232 +6,177 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+
+
+    <TextView
+        android:id="@+id/result"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="97dp">
+        android:layout_height="95dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraint_toRightOf="parent" />
 
-        <TextView
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:gravity="center"
-            android:inputType="text"
-            android:hint="Result" />
+    <Button
+        android:id="@+id/btnOne"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="1"
+        app:layout_constraintLeft_toBottomOf="@id/result"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        android:background="@drawable/rectangle" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/btnTwo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="2"
+        app:layout_constraintLeft_toBottomOf="@id/result"
+        app:layout_constraintLeft_toRightOf="@id/btnOne"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        android:background="@drawable/rectangle" />
 
-            <Button
-                android:id="@+id/showInput1"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="1"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnThree"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="3"
+        app:layout_constraintLeft_toBottomOf="@id/result"
+        app:layout_constraintLeft_toRightOf="@id/btnTwo"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        android:background="@drawable/rectangle" />
 
-            <Button
-                android:id="@+id/showInput2"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="2"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="+"
+        app:layout_constraintLeft_toBottomOf="@id/result"
+        app:layout_constraintLeft_toRightOf="@id/btnThree"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        android:background="@drawable/rectangle" />
 
-
-            <Button
-                android:id="@+id/showInput3"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="3"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-
-            <Button
-                android:id="@+id/showInput4"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="+"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnMul"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="*"
+        app:layout_constraintLeft_toBottomOf="@id/result"
+        app:layout_constraintLeft_toRightOf="@id/btnAdd"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        android:background="@drawable/rectangle" />
 
 
-            <Button
-                android:id="@+id/showInput5"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="*"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnFour"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/rectangle"
+        android:text="4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOne" />
 
+    <Button
+        android:id="@+id/btnFive"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="5"
+        app:layout_constraintLeft_toRightOf="@id/btnFour"
+        app:layout_constraintTop_toBottomOf="@+id/btnTwo"
+        android:background="@drawable/rectangle" />
 
+    <Button
+        android:id="@+id/btnSix"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="6"
+        app:layout_constraintLeft_toRightOf="@id/btnFive"
+        app:layout_constraintTop_toBottomOf="@+id/btnThree"
+        android:background="@drawable/rectangle" />
 
-        </LinearLayout>
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="-"
+        app:layout_constraintLeft_toRightOf="@id/btnSix"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdd"
+        android:background="@drawable/rectangle" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/btnDiv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="\"
+        app:layout_constraintLeft_toRightOf="@id/btnMinus"
+        app:layout_constraintTop_toBottomOf="@+id/btnMul"
+        android:background="@drawable/rectangle" />
 
-            <Button
-                android:id="@+id/showInput6"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="4"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnSeven"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/rectangle"
+        android:text="7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFour" />
 
-            <Button
-                android:id="@+id/showInput7"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="5"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnEight"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="8"
+        app:layout_constraintLeft_toRightOf="@id/btnSeven"
+        app:layout_constraintTop_toBottomOf="@+id/btnFour"
+        android:background="@drawable/rectangle" />
 
+    <Button
+        android:id="@+id/btnNine"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="9"
+        app:layout_constraintLeft_toRightOf="@id/btnEight"
+        app:layout_constraintTop_toBottomOf="@+id/btnSix"
+        android:background="@drawable/rectangle" />
 
-            <Button
-                android:id="@+id/showInput8"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="6"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnSqrt"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:text="sqrt"
+        app:layout_constraintLeft_toRightOf="@id/btnNine"
+        app:layout_constraintTop_toBottomOf="@+id/btnMinus"
+        android:background="@drawable/rectangle" />
 
+    <Button
+        android:id="@+id/btnZero"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSeven"
+        android:background="@drawable/rectangle" />
 
-            <Button
-                android:id="@+id/showInput9"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="-"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btnDot"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="."
+        app:layout_constraintLeft_toRightOf="@id/btnZero"
+        app:layout_constraintTop_toBottomOf="@+id/btnNine"
+        android:background="@drawable/rectangle" />
 
-
-            <Button
-                android:id="@+id/showInput10"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="/"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/showInput11"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="7"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-            <Button
-                android:id="@+id/showInput12"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="8"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-
-            <Button
-                android:id="@+id/showInput13"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="9"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-
-
-            <Button
-                android:id="@+id/showInput14"
-                android:layout_width="110dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="sqrt"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-
-            <Button
-                android:id="@+id/showInput15"
-                android:layout_width="110dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="0"
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-
-
-            <Button
-                android:id="@+id/showInput16"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="."
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-
-
-            <Button
-                android:id="@+id/showInput17"
-                android:layout_width="110dp"
-                android:layout_height="50dp"
-                android:layout_gravity="clip_horizontal"
-                android:text="="
-                android:onClick="numberEvent"
-                android:textColor="@android:color/white" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnEqual"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:text="="
+        app:layout_constraintLeft_toRightOf="@id/btnDot"
+        app:layout_constraintTop_toBottomOf="@+id/btnSqrt"
+        android:background="@drawable/rectangle" />
 
 
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
