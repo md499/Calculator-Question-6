@@ -33,16 +33,23 @@ class MainActivity : AppCompatActivity() {
         // Set the empty Editable as the text of the EditText
         txt.text = emptyEditable
     }
+    fun onSqrt(view: View) {
+        txt.append("√")
+    }
 
     fun onE(view: View) {
         val text = txt.text.toString()
-        val eval = ExpressionBuilder(text).build()
+        val displayText = text.replace("sqrt", "√")
+        val sanitizedText = text.replace("√", "sqrt") // Replace "√" with "sqrt" for expression evaluation
+        val eval = ExpressionBuilder(sanitizedText).build()
         val res = eval.evaluate()
 
-        // Convert the result to Editable
-        val resultText = Editable.Factory.getInstance().newEditable(res.toString())
-
-        txt.text = resultText
+        // Check for negative square root results
+        if (res.isNaN()) {
+            txt.text = Editable.Factory.getInstance().newEditable("Error")
+        } else {
+            txt.text = Editable.Factory.getInstance().newEditable(res.toString())
+        }
     }
 
 }
