@@ -10,7 +10,7 @@
         android:id="@+id/result"
         android:layout_width="0dp"
         android:layout_height="95dp"
-        android:text="result"
+        android:hint="result"
         android:gravity="center"
         android:textSize="40dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,6 +22,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="1"
+        android:onClick="onNum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
@@ -31,6 +32,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="2"
+        android:onClick="onNum"
         app:layout_constraintStart_toEndOf="@+id/btnOne"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
@@ -40,6 +42,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="3"
+        android:onClick="onNum"
         app:layout_constraintStart_toEndOf="@+id/btnTwo"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
@@ -49,6 +52,8 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="+"
+        android:onClick="onOperator"
+
         app:layout_constraintStart_toEndOf="@+id/btnThree"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
@@ -58,6 +63,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="*"
+        android:onClick="onOperator"
         app:layout_constraintStart_toEndOf="@+id/btnAdd"
         app:layout_constraintTop_toBottomOf="@+id/result"
         android:background="@drawable/rectangle" />
@@ -67,6 +73,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="4"
+        android:onClick="onNum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnOne"
         android:background="@drawable/rectangle" />
@@ -76,6 +83,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="5"
+        android:onClick="onNum"
         app:layout_constraintStart_toEndOf="@+id/btnFour"
         app:layout_constraintTop_toBottomOf="@+id/btnTwo"
         android:background="@drawable/rectangle" />
@@ -85,6 +93,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="6"
+        android:onClick="onNum"
         app:layout_constraintStart_toEndOf="@+id/btnFive"
         app:layout_constraintTop_toBottomOf="@+id/btnThree"
         android:background="@drawable/rectangle" />
@@ -94,6 +103,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="-"
+        android:onClick="onOperator"
         app:layout_constraintStart_toEndOf="@+id/btnSix"
         app:layout_constraintTop_toBottomOf="@+id/btnAdd"
         android:background="@drawable/rectangle" />
@@ -103,6 +113,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="/"
+        android:onClick="onOperator"
         app:layout_constraintStart_toEndOf="@+id/btnMinus"
         app:layout_constraintTop_toBottomOf="@+id/btnMul"
         android:background="@drawable/rectangle" />
@@ -112,6 +123,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="7"
+        android:onClick="onNum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFour"
         android:background="@drawable/rectangle" />
@@ -121,6 +133,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="8"
+        android:onClick="onNum"
         app:layout_constraintStart_toEndOf="@+id/btnSeven"
         app:layout_constraintTop_toBottomOf="@+id/btnFour"
         android:background="@drawable/rectangle" />
@@ -130,6 +143,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="9"
+        android:onClick="onNum"
         app:layout_constraintStart_toEndOf="@+id/btnEight"
         app:layout_constraintTop_toBottomOf="@+id/btnSix"
         android:background="@drawable/rectangle" />
@@ -139,6 +153,7 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:text="sqrt"
+        android:onClick="onSqrt"
         app:layout_constraintStart_toEndOf="@+id/btnNine"
         app:layout_constraintTop_toBottomOf="@+id/btnMinus"
         android:background="@drawable/rectangle" />
@@ -148,6 +163,7 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:text="0"
+        android:onClick="onNum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSeven"
         android:background="@drawable/rectangle" />
@@ -157,6 +173,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:text="."
+        android:onClick="onDot"
         app:layout_constraintStart_toEndOf="@+id/btnZero"
         app:layout_constraintTop_toBottomOf="@+id/btnNine"
         android:background="@drawable/rectangle" />
@@ -166,6 +183,7 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:text="="
+        android:onClick="onE"
         app:layout_constraintStart_toEndOf="@+id/btnDot"
         app:layout_constraintTop_toBottomOf="@+id/btnSqrt"
         android:background="@drawable/rectangle" />
@@ -175,6 +193,7 @@
         android:layout_width="400dp"
         android:layout_height="80dp"
         android:text="Clear"
+        android:onClick="onDel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnZero"
         android:background="@drawable/rectangle" />
