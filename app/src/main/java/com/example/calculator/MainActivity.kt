@@ -2,8 +2,10 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,25 +48,95 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /// add append functions
-
     private fun addBtn(str: String) {
         calc += str
         updateRes()
     }
 
-//    private fun equal() {
-//        var total = 0.0
-//        var prevnum = 0.0
-//        for (char in calc) {
-//            char in "+-*/" -> {
-//
-//            }
-////        }
-////    }
+    private fun clearSqrt(calc: String): String {
+        return calc.replace("sqrt", "s")
+    }
 
     private fun equal(calc: String) {
-        return
+
+        var calculation = clearSqrt(calc)
+        var currentNumber = StringBuilder()
+        var currentOperator = '+'
+        var total = 0.0
+        var isDecimal = false
+
+
+        for (char in calculation) {
+            Log.d("calc1", "$calculation")
+            when {
+                char.isDigit() -> {
+                    if (isDecimal) {
+                        currentNumber.append(char)
+                    } else {
+                        currentNumber.append(char)
+                    }
+                }
+                char == '.' -> {
+                    isDecimal = true
+                    currentNumber.append(char)
+                }
+                char == 's' -> {
+                    val number = currentNumber.toString().toDouble()
+                    Log.d("num", "$number")
+                    Log.d("char", "$char")
+                    Log.d("total", "$total")
+                    when (currentOperator) {
+                        '+' -> total += number
+                        '-' -> total -= number
+                        '*' -> total *= number
+                        '/' -> total /= number
+                    }
+                    total = sqrt(number)
+                    currentOperator = '+'
+                    Log.d("total2", "$total")
+                }
+                char in "+-*/" -> {
+                    val number = currentNumber.toString().toDouble()
+                    when (currentOperator) {
+                        '+' -> total += number
+                        '-' -> total -= number
+                        '*' -> total *= number
+                        '/' -> total /= number
+                    }
+                    currentNumber = StringBuilder()
+                    currentOperator = char
+                    isDecimal = false
+                }
+//                char in "s" -> {
+//                    val number = currentNumber.toString().toDouble()
+//                    Log.d("calc2", "$calculation")
+//                    Log.d("num", "$number")
+//                    Log.d("final1", "$total")
+//                    total = sqrt(number)
+//                    Log.d("calc3", "$calculation")
+//                    Log.d("final2", "$total")
+//                    Log.d("calc4", "$calculation")
+//                    Log.d("char", "$char")
+//                    currentNumber = StringBuilder()
+//                    currentOperator = '+'
+//                    isDecimal = false
+//
+//                }
+                else -> {}
+            }
+
+        }
+
+        val number = currentNumber.toString().toDouble()
+        when (currentOperator) {
+            '+' -> total += number
+            '-' -> total -= number
+            '*' -> total *= number
+            '/' -> total /= number
+            else -> total = number
+        }
+
+        result.setText(total.toString())
     }
 
     private fun clear() {
