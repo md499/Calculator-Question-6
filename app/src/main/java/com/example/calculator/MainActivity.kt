@@ -76,19 +76,26 @@ class MainActivity : AppCompatActivity() {
                         isNegative = !isNegative
                     } else {
                         val number = currentNumber.toDouble()
-                        total = applyOperator(currentOperator, total, if (isNegative) -number else number)
+                        total = applyOperator(
+                            currentOperator,
+                            total,
+                            if (isNegative) -number else number
+                        )
                         currentNumber = ""
                         isNegative = false
                         currentOperator = '-'
                     }
                 }
+
                 char == '+' || char == '*' || char == '/' -> {
                     val number = currentNumber.toDouble()
-                    total = applyOperator(currentOperator, total, if (isNegative) -number else number)
+                    total =
+                        applyOperator(currentOperator, total, if (isNegative) -number else number)
                     currentNumber = ""
                     isNegative = false
                     currentOperator = char
                 }
+
                 char == 's' -> {
                     if (currentNumber.isNotEmpty()) {
                         val number = currentNumber.toDouble()
@@ -99,6 +106,7 @@ class MainActivity : AppCompatActivity() {
                         currentOperator = '+'
                     }
                 }
+
                 char.isDigit() || char == '.' -> {
                     currentNumber += char
                 }
@@ -127,6 +135,7 @@ class MainActivity : AppCompatActivity() {
                     Double.NaN //
                 }
             }
+
             else -> operand2
         }
     }
@@ -136,4 +145,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-}
