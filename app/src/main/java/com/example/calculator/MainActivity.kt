@@ -2,87 +2,47 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import net.objecthunter.exp4j.ExpressionBuilder
+
 
 class MainActivity : AppCompatActivity() {
-
-    private var calc = ""
-    private lateinit var result: EditText
-
+    private lateinit var txt: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        txt = findViewById(R.id.result)
+    }
+    fun onNum(view: View)
+    {
+        txt.append((view as Button).text)
+    }
+    fun onOperator(view: View){
+        txt.append((view as Button).text)
+    }
+    fun onDot(view: View){
+        txt.append((view as Button).text)
+    }
+    fun onDel(view: View){
+        val emptyEditable = Editable.Factory.getInstance().newEditable("")
 
-
-        result = findViewById<EditText>(R.id.result)
-
-        val btns = listOf<Button>(
-        findViewById<Button>(R.id.btnZero),
-        findViewById<Button>(R.id.btnOne),
-        findViewById<Button>(R.id.btnTwo),
-        findViewById<Button>(R.id.btnThree),
-        findViewById<Button>(R.id.btnFour),
-        findViewById<Button>(R.id.btnFive),
-        findViewById<Button>(R.id.btnSix),
-        findViewById<Button>(R.id.btnSeven),
-        findViewById<Button>(R.id.btnEight),
-        findViewById<Button>(R.id.btnNine),
-        findViewById<Button>(R.id.btnDot),
-        findViewById<Button>(R.id.btnAdd),
-        findViewById<Button>(R.id.btnMinus),
-        findViewById<Button>(R.id.btnMul),
-        findViewById<Button>(R.id.btnDiv),
-        findViewById<Button>(R.id.btnSqrt))
-
-        btns.forEach{ btn ->
-        btn.setOnClickListener{addBtn(btn.text.toString())}}
-
-        val btnEqual = findViewById<Button>(R.id.btnEqual)
-        val btnClear = findViewById<Button>(R.id.btnClear)
-
-        btnEqual.setOnClickListener{equal(calc)}
-        btnClear.setOnClickListener{clear()}
-
+        // Set the empty Editable as the text of the EditText
+        txt.text = emptyEditable
     }
 
-    /// add append functions
+    fun onE(view: View) {
+        val text = txt.text.toString()
+        val eval = ExpressionBuilder(text).build()
+        val res = eval.evaluate()
 
-    private fun addBtn(str: String) {
-        calc += str
-        updateRes()
+        // Convert the result to Editable
+        val resultText = Editable.Factory.getInstance().newEditable(res.toString())
+
+        txt.text = resultText
     }
-
-//    private fun equal() {
-//        var total = 0.0
-//        var prevnum = 0.0
-//        for (char in calc) {
-//            char in "+-*/" -> {
-//
-//            }
-////        }
-////    }
-
-    private fun equal(calc: String) {
-        return
-    }
-
-    private fun clear() {
-        calc = ""
-        updateRes()
-    }
-
-    private fun updateRes() {
-        result.setText(calc)
-    }
-
-
-
-
-
-
-
-
-
 
 }
