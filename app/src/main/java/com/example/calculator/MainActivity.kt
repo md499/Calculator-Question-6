@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         result = findViewById<EditText>(R.id.result)
 
         val btns = listOf<Button>(
@@ -45,104 +44,94 @@ class MainActivity : AppCompatActivity() {
         val btnEqual = findViewById<Button>(R.id.btnEqual)
         val btnClear = findViewById<Button>(R.id.btnClear)
 
-        btnEqual.setOnClickListener { equal(calc) }
+        btnEqual.setOnClickListener { equal() }
         btnClear.setOnClickListener { clear() }
-
     }
 
     private fun addBtn(str: String) {
-        calc += str
-        updateRes()
+        val currentText = result.text.toString()
+        result.setText(currentText + str)
     }
 
-    private fun clearSqrt(calc: String): String {
-        return calc.replace("sqrt", "s")
+    private fun equal() {
+        val expression = result.text.toString()
+        val sanitizedExpression = expression.replace("squareroot", "sqrt")
+        val resultValue = evaluateExpression(sanitizedExpression)
+        result.setText(resultValue.toString())
     }
 
-    private fun equal(calc: String) {
-        var calculation = result.text.toString()
-        var currentNumber = StringBuilder()
+    private fun evaluateExpression(expression: String): Double {
+        // You should implement a parser and evaluator for complex expressions here.
+        // This code currently handles simple expressions with sqrt and basic operators.
+        var currentNumber = ""
         var currentOperator = '+'
         var total = 0.0
-        var isDecimal = false
+        var isNegative = false
 
-        for (char in calculation) {
+        for (char in expression) {
             when {
-                char.isDigit() -> {
-                    if (isDecimal) {
-                        currentNumber.append(char)
+                char == '-' -> {
+                    if (currentNumber.isEmpty()) {
+                        isNegative = !isNegative
                     } else {
-                        currentNumber.append(char)
+                        val number = currentNumber.toDouble()
+                        total = applyOperator(currentOperator, total, if (isNegative) -number else number)
+                        currentNumber = ""
+                        isNegative = false
+                        currentOperator = '-'
                     }
                 }
-
-                char == '.' -> {
-                    isDecimal = true
-                    currentNumber.append(char)
+                char == '+' || char == '*' || char == '/' -> {
+                    val number = currentNumber.toDouble()
+                    total = applyOperator(currentOperator, total, if (isNegative) -number else number)
+                    currentNumber = ""
+                    isNegative = false
+                    currentOperator = char
                 }
-
                 char == 's' -> {
                     if (currentNumber.isNotEmpty()) {
-                        val number = currentNumber.toString().toDouble()
-                        Log.d("num", "$number")
-                        Log.d("char", "$char")
-                        Log.d("total", "$total")
-
-                        // Apply the square root operation as a unary operator
-                        var squareRootResult = sqrt(number)
-
-                        total += squareRootResult
-
-                        // Reset the current operator to none to handle any
-                        //arithmetic after root:NOT WORKING
-
-                        currentOperator = ' '
-
-                        currentNumber = StringBuilder()
-                        isDecimal = false
+                        val number = currentNumber.toDouble()
+                        val squareRootResult = sqrt(if (isNegative) -number else number)
+                        total = applyOperator(currentOperator, total, squareRootResult)
+                        currentNumber = ""
+                        isNegative = false
+                        currentOperator = '+'
                     }
                 }
-
-                char in "+-*/" -> {
-                    if (currentNumber.isNotEmpty()) {
-                        val number = currentNumber.toString().toDouble()
-                        when (currentOperator) {
-                            '+' -> total += number
-                            '-' -> total -= number
-                            '*' -> total *= number
-                            '/' -> total /= number
-                        }
-                        currentNumber = StringBuilder()
-                        currentOperator = char
-                        isDecimal = false
-                    }
+                char.isDigit() || char == '.' -> {
+                    currentNumber += char
                 }
-
-                else -> {}
             }
         }
 
         if (currentNumber.isNotEmpty()) {
-            val number = currentNumber.toString().toDouble()
-            when (currentOperator) {
-                '+' -> total += number
-                '-' -> total -= number
-                '*' -> total *= number
-                '/' -> total /= number
-                else -> total = number
-            }
+            val number = currentNumber.toDouble()
+            total = applyOperator(currentOperator, total, if (isNegative) -number else number)
         }
 
-        result.setText(total.toString())
+        return total
+    }
+
+    private fun applyOperator(operator: Char, operand1: Double, operand2: Double): Double {
+        return when (operator) {
+            '+' -> operand1 + operand2
+            '-' -> operand1 - operand2
+            '*' -> operand1 * operand2
+            '/' -> {
+
+                if (operand2 != 0.0) {
+                    operand1 / operand2
+                } else {
+
+                    Double.NaN //
+                }
+            }
+            else -> operand2
+        }
     }
 
     private fun clear() {
-        calc = ""
-        updateRes()
-    }
-
-    private fun updateRes() {
-        result.setText(calc)
+        result.setText("")
     }
 
 
