@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
@@ -122,7 +123,7 @@ class MainActivity : AppCompatActivity() {
                 if (operand2 != 0.0) {
                     operand1 / operand2
                 } else {
-
+                    Toast.makeText(this, R.string.divzero, Toast.LENGTH_SHORT).show()
                     Double.NaN //
                 }
             }
