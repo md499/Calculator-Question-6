@@ -2,7 +2,6 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -10,7 +9,6 @@ import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
 
-    private var calc = ""
     private lateinit var result: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,5 +141,6 @@ class MainActivity : AppCompatActivity() {
     private fun clear() {
         result.setText("")
     }
+}
 
 
