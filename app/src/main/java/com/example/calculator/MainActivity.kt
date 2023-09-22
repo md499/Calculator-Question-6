@@ -62,16 +62,24 @@ class MainActivity : AppCompatActivity() {
         return (op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')
     }
 
+
+
     private fun isOp(ch: Char) : Boolean {
-        return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == 's'
+        return ch == '+' || ch == '-' || ch == '*' || ch == '/' || (ch == 's')
     }
 
 
     private fun equal() {
         val expression = result.text.toString()
-        val sanitizedExpression = expression.replace("squareroot", "sqrt")
-        val resultValue = parser(sanitizedExpression)
-        result.setText(resultValue.toString())
+        if (expression.isEmpty()) {
+            Toast.makeText(this, R.string.emptyexp, Toast.LENGTH_SHORT).show()
+        } else {
+            Log.d("exp", expression)
+            val sanitizedExpression = expression.replace("sqrt", "s")
+            Log.d("exp", sanitizedExpression)
+            val resultValue = parser(sanitizedExpression)
+            result.setText(resultValue.toString())
+        }
     }
 
     private fun parser(expression: String) : Double{
@@ -82,17 +90,26 @@ class MainActivity : AppCompatActivity() {
         for (ch in expression) {
             when {
                 isOp(ch) -> {
-                    valueStack.push(currentNumber.toDouble())
-                    currentNumber = ""
-                    if (operatorStack.isEmpty() || precedence(ch,operatorStack.peek())) {
+                    if (ch == 's') {
                         operatorStack.push(ch)
                     } else {
-                        while(!operatorStack.isEmpty() && precedence(operatorStack.peek(),ch)) {
-                            val n = operatorStack.peek()
-                            operatorStack.pop()
-                            applyOperator(n)
+                        valueStack.push(currentNumber.toDouble())
+                        currentNumber = ""
+                        if (operatorStack.isEmpty() || precedence(ch, operatorStack.peek())) {
+                            operatorStack.push(ch)
+                        } else {
+                            while (!operatorStack.isEmpty() && precedence(operatorStack.peek(), ch)) {
+                                val n = operatorStack.peek()
+                                operatorStack.pop()
+                                if (n == 's') {
+                                    val value = valueStack.peek()
+                                    valueStack.push(sqrt(valueStack.pop()))
+                                } else {
+                                    valueStack.push(applyOperator(n))
+                                }
+                            }
+                            operatorStack.push(ch)
                         }
-                        operatorStack.push(ch)
                     }
                 }
                 ch.isDigit() || ch == '.' -> {
@@ -101,13 +118,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         valueStack.push(currentNumber.toDouble())
-        // Empty op stack
         try {
-            while(!operatorStack.isEmpty()) {
+            while (!operatorStack.isEmpty()) {
                 val n = operatorStack.peek()
                 operatorStack.pop()
-                valueStack.push(applyOperator(n))
-
+                if (n == 's') {
+                    var value = valueStack.peek()
+                    Log.d("val", value.toString())
+                    valueStack.push(sqrt(valueStack.pop()))
+                } else {
+                    valueStack.push(applyOperator(n))
+                }
             }
             total = valueStack.peek()
 
@@ -122,62 +143,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    private fun evaluateExpression(expression: String): Double {
-//        // You should implement a parser and evaluator for complex expressions here.
-//        // This code currently handles simple expressions with sqrt and basic operators.
-//        var currentNumber = ""
-//        var currentOperator = '+'
-//        var total = 0.0
-//        var isNegative = false
-//
-//        for (char in expression) {
-//            when {
-//                char == '-' -> {
-//                    if (currentNumber.isEmpty()) {
-//                        isNegative = !isNegative
-//                    } else {
-//                        val number = currentNumber.toDouble()
-//                        total = applyOperator(currentOperator, total, if (isNegative) -number else number)
-//                        currentNumber = ""
-//                        isNegative = false
-//                        currentOperator = '-'
-//                    }
-//                }
-//                char == '+' || char == '*' || char == '/' -> {
-//                    val number = currentNumber.toDouble()
-//                    total = applyOperator(currentOperator, total, if (isNegative) -number else number)
-//                    currentNumber = ""
-//                    isNegative = false
-//                    currentOperator = char
-//                }
-//                char == 's' -> {
-//                    if (currentNumber.isNotEmpty()) {
-//                        val number = currentNumber.toDouble()
-//                        val squareRootResult = sqrt(if (isNegative) -number else number)
-//                        total = applyOperator(currentOperator, total, squareRootResult)
-//                        currentNumber = ""
-//                        isNegative = false
-//                        currentOperator = '+'
-//                    }
-//                }
-//                char.isDigit() || char == '.' -> {
-//                    currentNumber += char
-//                }
-//            }
-//        }
-//
-//        if (currentNumber.isNotEmpty()) {
-//            val number = currentNumber.toDouble()
-//            total = applyOperator(currentOperator, total, if (isNegative) -number else number)
-//        }
-//
-//        return total
-//    }
-
     private fun applyOperator(operator: Char): Double {
         var operand1 : Double
         var operand2 : Double
-//        var result : Double
 
         if (valueStack.isEmpty()) {
             return Double.NaN

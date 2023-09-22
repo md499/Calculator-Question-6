@@ -19,4 +19,5 @@
     <string name="equal">=</string>
     <string name="clear">Clear</string>
     <string name="divzero">Cannot Divide By 0</string>
+    <string name="emptyexp">No Expression Given</string>
 </resources>
