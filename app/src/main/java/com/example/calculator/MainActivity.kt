@@ -6,13 +6,11 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import java.lang.Exception
 import kotlin.math.sqrt
 import java.util.Stack
 
 class MainActivity : AppCompatActivity() {
 
-    private var calc = ""
     private lateinit var result: EditText
     val valueStack = Stack<Double>()
     val operatorStack = Stack<Char>()
@@ -63,15 +61,16 @@ class MainActivity : AppCompatActivity() {
             op1 == 's' -> {
                 return true
             }
+
             op2 == 's' -> {
                 return false
             }
+
             else -> {
                 return (op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')
             }
         }
     }
-
 
     private fun isOp(ch: Char): Boolean {
         return ch == '+' || ch == '-' || ch == '*' || ch == '/' || (ch == 's')
@@ -137,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 val n = operatorStack.peek()
                 operatorStack.pop()
                 if (n == 's') {
-                    var value = valueStack.peek()
+                    val value = valueStack.peek()
                     Log.d("val", value.toString())
                     valueStack.push(sqrt(valueStack.pop()))
                 } else {
@@ -146,10 +145,9 @@ class MainActivity : AppCompatActivity() {
             }
             total = valueStack.peek()
 
-        } catch (e: Exception) {
-            println("Error")
+        } catch (e: Throwable) {
+            Log.e("Error", " ", e)
             total = Double.NaN
-            print("exception")
         }
 
         return total
@@ -158,19 +156,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun applyOperator(operator: Char): Double {
-        var operand1: Double
-        var operand2: Double
+        val operand1: Double
+        val operand2: Double
 
         if (valueStack.isEmpty()) {
             return Double.NaN
-            print("its empty")
         } else {
             operand2 = valueStack.peek()
             valueStack.pop()
         }
         if (valueStack.isEmpty()) {
             return Double.NaN
-            print("2 is empty")
         } else {
             operand1 = valueStack.peek()
             valueStack.pop()
