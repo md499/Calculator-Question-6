@@ -59,12 +59,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun precedence(op1: Char, op2: Char): Boolean {
-        return (op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')
+        when {
+            op1 == 's' -> {
+                return true
+            }
+            op2 == 's' -> {
+                return false
+            }
+            else -> {
+                return (op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')
+            }
+        }
     }
 
 
-
-    private fun isOp(ch: Char) : Boolean {
+    private fun isOp(ch: Char): Boolean {
         return ch == '+' || ch == '-' || ch == '*' || ch == '/' || (ch == 's')
     }
 
@@ -82,9 +91,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun parser(expression: String) : Double{
+    private fun parser(expression: String): Double {
         var currentNumber = ""
-        var total : Double
+        var total: Double
 
 
         for (ch in expression) {
@@ -98,7 +107,11 @@ class MainActivity : AppCompatActivity() {
                         if (operatorStack.isEmpty() || precedence(ch, operatorStack.peek())) {
                             operatorStack.push(ch)
                         } else {
-                            while (!operatorStack.isEmpty() && precedence(operatorStack.peek(), ch)) {
+                            while (!operatorStack.isEmpty() && precedence(
+                                    operatorStack.peek(),
+                                    ch
+                                )
+                            ) {
                                 val n = operatorStack.peek()
                                 operatorStack.pop()
                                 if (n == 's') {
@@ -112,6 +125,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
+
                 ch.isDigit() || ch == '.' -> {
                     currentNumber += ch
                 }
@@ -144,8 +158,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun applyOperator(operator: Char): Double {
-        var operand1 : Double
-        var operand2 : Double
+        var operand1: Double
+        var operand2: Double
 
         if (valueStack.isEmpty()) {
             return Double.NaN
@@ -173,6 +187,7 @@ class MainActivity : AppCompatActivity() {
                     Double.NaN //
                 }
             }
+
             else -> operand2
         }
     }
